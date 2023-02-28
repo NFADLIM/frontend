@@ -33,7 +33,7 @@ const AddGedungForm = () => {
 		});
 	};
 
-	const Submit = (namaGedung, penjelasan, image, linkTour) => {
+	const Submit = (idGedung, namaGedung, penjelasan, gambar, linkTour) => {
 		const bodyJSON = {
 			idGedung:   idGedung,
 			namaGedung: namaGedung,
