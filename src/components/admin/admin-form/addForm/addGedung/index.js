@@ -6,9 +6,10 @@ import Swal from 'sweetalert2';
 import { addGedung } from '../../../../../services/api';
 
 const AddGedungForm = () => {
+	const [idGedung, setIdGedung] = useState('');
 	const [namaGedung, setNamaGedung] = useState('');
 	const [penjelasan, setPenjelasan] = useState('');
-	const [image, setImage] = useState('');
+	const [gambar, setGambar] = useState('');
 	const [linkTour, setLinkTour] = useState('');
 	const navigate = useNavigate();
 	const [validated, setValidated] = useState(false);
@@ -34,9 +35,10 @@ const AddGedungForm = () => {
 
 	const Submit = (namaGedung, penjelasan, image, linkTour) => {
 		const bodyJSON = {
+			idGedung:   idGedung,
 			namaGedung: namaGedung,
 			penjelasan: penjelasan,
-			image: image,
+			gambar: gambar,
 			linkTour: linkTour,
 		};
 		return addGedung(bodyJSON);
@@ -66,7 +68,23 @@ const AddGedungForm = () => {
 					TAMBAH GEDUNG
 				</h3>
 			</div>
+			
 			<Form noValidate validated={validated} onSubmit={handleSubmit}>
+			<Form.Group className="mb-3" controlId="validationnamaGedung">
+					<Form.Label style={{ float: 'left' }}>id Gedung :</Form.Label>
+					<Form.Control
+						placeholder="id"
+						aria-label="id"
+						aria-describedby="basic-addon2"
+						value={idGedung}
+						onChange={(e) => setIdGedung(e.target.value)}
+						required
+					/>
+					<Form.Control.Feedback type="invalid">
+						Nama Gedung Kosong!
+					</Form.Control.Feedback>
+				</Form.Group>
+
 				<Form.Group className="mb-3" controlId="validationnamaGedung">
 					<Form.Label style={{ float: 'left' }}>Nama Gedung :</Form.Label>
 					<Form.Control
@@ -117,8 +135,8 @@ const AddGedungForm = () => {
 					<Form.Control
 						type="text"
 						required
-						value={image}
-						onChange={(e) => setImage(e.target.value)}
+						value={gambar}
+						onChange={(e) => setGambar(e.target.value)}
 					/>{' '}
 					<Form.Control.Feedback type="invalid">
 						Gambar Gedung Kosong!
