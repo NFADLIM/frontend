@@ -34,6 +34,7 @@ const AddGedungForm = () => {
 	};
 
 	const Submit = (idGedung, namaGedung, penjelasan, gambar, linkTour) => {
+		console.log (namaGedung);
 		const bodyJSON = {
 			idGedung:   idGedung,
 			namaGedung: namaGedung,
