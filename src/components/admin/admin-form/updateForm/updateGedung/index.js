@@ -35,6 +35,7 @@ const UpdateGedungForm = () => {
 	};
 
 	const Submit = (namaGedung, penjelasan, image, linkTour) => {
+		console.log (namaGedung);
 		const bodyJSON = {
 			namaGedung: namaGedung,
 			penjelasan: penjelasan,
